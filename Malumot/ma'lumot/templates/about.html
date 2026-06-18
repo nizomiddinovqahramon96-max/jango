@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="section container">
+    <div class="section-heading compact-heading">
+        <div>
+            <p class="eyebrow">About</p>
+            <h1>Qahramon Nizomiddinov haqida</h1>
+        </div>
+        <p>Backend yo'nalishida rivojlanayotgan yosh Python developer.</p>
+    </div>
+
+    <div class="about-layout">
+        <article class="panel profile-panel">
+            <div class="avatar">QN</div>
+            <h2>{{ profile.name }}</h2>
+            <p class="role-line">{{ profile.role }}</p>
+            <ul class="detail-list">
+                <li><strong>Yosh:</strong> {{ profile.age }}</li>
+                <li><strong>O'qish:</strong> {{ profile.school }}</li>
+                <li><strong>Markaz:</strong> {{ profile.center }}</li>
+                <li><strong>Maqsad:</strong> {{ profile.goal }}</li>
+            </ul>
+        </article>
+
+        <article class="panel">
+            <h3>Yo'nalish va tajriba</h3>
+            <p>Men Python, HTML, CSS va Django bilan ishlayman. Har bir loyihada avval oddiy va tushunarli interfeys yaratishga, keyin esa backend mantiqini toza va ishonchli qilishga harakat qilaman.</p>
+            <p>Mars IT markazida dasturlashni o'rganar ekanman, loyiha qilish orqali nazariyani amaliyotga aylantiraman. Hozirgi asosiy e'tiborim Django, ma'lumotlar bilan ishlash va backend arxitektura asoslarini mustahkamlashda.</p>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <span class="timeline-dot"></span>
+                    <div>
+                        <strong>281-maktab</strong>
+                        <p>Maktab o'quvchisi sifatida bilim olish va texnologiyaga qiziqishni rivojlantiraman.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-dot"></span>
+                    <div>
+                        <strong>Mars IT markazi</strong>
+                        <p>Dasturlashni amaliy loyihalar orqali o'rganaman va jamoa bilan tajriba almashaman.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-dot"></span>
+                    <div>
+                        <strong>Backend yo'nalishi</strong>
+                        <p>Kelajakda kuchli Backend Developer bo'lish uchun Python va Django bo'yicha chuqur bilim orttiraman.</p>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <article class="panel">
+            <h3>Skills</h3>
+            <div class="skill-cloud">
+                {% for skill in skills %}
+                <span class="skill-pill">{{ skill }}</span>
+                {% endfor %}
+            </div>
+        </article>
+
+        <article class="panel">
+            <h3>Qiziqishlar</h3>
+            <p>Boks va armrestling menga doimiy mashg'ulot, sabr va g'alaba uchun kurashishni o'rgatadi. Shu kabi sportdagi intizom dasturlashda ham kerak deb bilaman.</p>
+            <div class="interest-list">
+                <span>Boks</span>
+                <span>Armrestling</span>
+                <span>Dasturlash</span>
+                <span>Backend</span>
+            </div>
+        </article>
+    </div>
+</section>
+{% endblock %}

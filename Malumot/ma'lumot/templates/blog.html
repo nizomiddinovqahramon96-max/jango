@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="section container">
+    <div class="section-heading compact-heading">
+        <div>
+            <p class="eyebrow">Blog</p>
+            <h1>Yozuvlar</h1>
+        </div>
+        <p>Python, Django, frontend va loyiha tajribalarim haqida qisqa xotiralar.</p>
+    </div>
+
+    <div class="blog-list">
+        {% for group in blog_groups %}
+        <section class="blog-year">
+            <h2>{{ group.year }}</h2>
+
+            {% for month in group.months %}
+            <section class="blog-month">
+                <h3>{{ month.name }}</h3>
+                <ul>
+                    {% for post in month.posts %}
+                    <li>
+                        <a id="post-{{ post.sort }}" href="{% url 'blog' %}#post-{{ post.sort }}">
+                            <span class="blog-date">{{ post.date }}</span>
+                            <span class="blog-content">
+                                <strong>{{ post.title }}</strong>
+                                <span>{{ post.summary }}</span>
+                            </span>
+                            <span class="blog-tag">{{ post.tag }}</span>
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </section>
+            {% endfor %}
+        </section>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

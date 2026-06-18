@@ -1,0 +1,86 @@
+{% load static %}
+<!doctype html>
+<html lang="uz">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ page_title }}</title>
+    <meta name="description" content="{{ meta_description }}">
+    <meta name="keywords" content="Qahramon Nizomiddinov, Python Developer, Django, Student, portfolio, blog, Python, HTML, CSS">
+    <meta name="author" content="Qahramon Nizomiddinov">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="{{ page_title }}">
+    <meta property="og:description" content="{{ meta_description }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+    <meta property="og:site_name" content="Qahramon Nizomiddinov">
+    <meta name="theme-color" content="#f3f1ec">
+    <link rel="canonical" href="{{ request.build_absolute_uri }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <a class="skip-link" href="#main">Asosiy kontentga o'tish</a>
+
+    <header class="site-header">
+        <nav class="navbar container" aria-label="Asosiy navigatsiya">
+            <a class="brand" href="{% url 'home' %}" aria-label="Qahramon Nizomiddinov bosh sahifasi">
+                <span class="brand-mark">Q</span>
+                <span class="brand-text">
+                    <strong>Qahramon</strong>
+                    <small>Python Developer</small>
+                </span>
+            </a>
+
+            <button class="menu-toggle" type="button" aria-label="Menyuni ochish" aria-controls="primary-menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <div class="nav-menu" id="primary-menu">
+                <a class="{% if active == 'home' %}active{% endif %}" href="{% url 'home' %}">Bosh sahifa</a>
+                <a class="{% if active == 'about' %}active{% endif %}" href="{% url 'about' %}">Haqimda</a>
+                <a class="{% if active == 'projects' %}active{% endif %}" href="{% url 'projects' %}">Loyihalar</a>
+                <a class="{% if active == 'blog' %}active{% endif %}" href="{% url 'blog' %}">Blog</a>
+                <a class="nav-instagram" href="{{ profile.instagram_url }}" target="_blank" rel="noopener noreferrer">{{ profile.instagram }}</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="site-main" id="main">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <div>
+                <strong>Qahramon Nizomiddinov</strong>
+                <span>Python Developer va Student</span>
+            </div>
+            <div class="footer-links">
+                <a href="{% url 'home' %}">Bosh sahifa</a>
+                <a href="{% url 'about' %}">Haqimda</a>
+                <a href="{% url 'projects' %}">Loyihalar</a>
+                <a href="{% url 'blog' %}">Blog</a>
+                <a href="{{ profile.instagram_url }}" target="_blank" rel="noopener noreferrer">{{ profile.instagram }}</a>
+            </div>
+            <p>© 2026 Qahramon Nizomiddinov. Barcha huquqlar himoyalangan.</p>
+        </div>
+    </footer>
+
+    <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const primaryMenu = document.getElementById('primary-menu');
+
+        if (menuToggle && primaryMenu) {
+            menuToggle.addEventListener('click', () => {
+                const isOpen = primaryMenu.classList.toggle('is-open');
+                menuToggle.setAttribute('aria-expanded', String(isOpen));
+            });
+        }
+    </script>
+</body>
+</html>

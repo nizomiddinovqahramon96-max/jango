@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="section container">
+    <div class="section-heading compact-heading">
+        <div>
+            <p class="eyebrow">Projects</p>
+            <h1>Portfolio loyihalarim</h1>
+        </div>
+        <p>Har bir loyiha oddiy g'oyani toza interfeys va ishlaydigan mantiq bilan ko'rsatish uchun yaratilgan.</p>
+    </div>
+
+    <div class="projects-grid">
+        {% for project in projects %}
+        <article class="panel project-card">
+            <span class="project-number">0{{ forloop.counter }}</span>
+            <h2>{{ project.title }}</h2>
+            <p>{{ project.short }}</p>
+            <p class="project-description">{{ project.description }}</p>
+            <div class="project-stack">
+                {% for item in project.stack %}
+                <span>{{ item }}</span>
+                {% endfor %}
+            </div>
+            <ul class="feature-list">
+                {% for feature in project.features %}
+                <li>{{ feature }}</li>
+                {% endfor %}
+            </ul>
+        </article>
+        {% endfor %}
+    </div>
+</section>
+
+<section class="section container">
+    <div class="contact-card">
+        <div>
+            <p class="eyebrow">Bog'lanish</p>
+            <h2>Yangi loyihalar va fikr almashish uchun</h2>
+            <p>Portfolio, Django loyihalari va dasturlash bo'yicha fikrlarni Instagram orqali ulashish mumkin.</p>
+        </div>
+        <a class="btn primary" href="{{ profile.instagram_url }}" target="_blank" rel="noopener noreferrer">{{ profile.instagram }}</a>
+    </div>
+</section>
+{% endblock %}
